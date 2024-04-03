@@ -3,8 +3,8 @@ const database = require("./pg");
 const search = (query) => {
     //TODO fix up
     return new Promise((resolve, reject) => {
-        const sql = "SELECT name, desacription, image FROM public.data ORDER BY name ASC WHERE name LIKE $1 OR description LIKE $1;";
-        database.query(sql, [query, query], (err, result) => {
+        const sql = "SELECT name, description, image FROM public.data WHERE name ~* $1 or description ~* $1";
+        database.query(sql, [query.split(" ").join("|")], (err, result) => {
             if (err) {
                 reject(err);
             } else if (!result) {
