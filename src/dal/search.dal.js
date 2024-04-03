@@ -1,13 +1,13 @@
 const {postgresSearch} = require("./search.pg.dal");
 const {mongodbSearch} = require("./search.mgd.dal");
-
+const {logger} = require("../logger");
 
 const search = async (query, database) => {
     const results = [];
     if (database === "pg" || database === "both") {
         results.push(
             ...await postgresSearch(query).catch((err) => {
-                console.error(err)
+                logger.error(err.message);
                 return [];
             })
         )
@@ -15,7 +15,7 @@ const search = async (query, database) => {
     if (database === "mongo" || database === "both") {
         results.push(
             ...await mongodbSearch(query).catch((err) => {
-                console.error(err)
+                logger.error(err.message);
                 return [];
             })
         );

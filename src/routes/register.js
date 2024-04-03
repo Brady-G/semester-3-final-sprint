@@ -1,5 +1,6 @@
 const crypto = require("crypto");
 const {getUser, addUser} = require("../dal/users.dal");
+const {logger} = require("../logger");
 
 require('dotenv').config()
 
@@ -36,11 +37,14 @@ module.exports = (req, res) => {
                             }
                         })
                         .catch((err) => {
-                            console.log(err);
+                            logger.error(`Error adding user: ${err.message}`);
                             res.sendStatus(500).send("Internal Server Error");
                         });
                 }
             })
-            .catch(() => res.status(500).send("Internal Server Error"));
+            .catch((err) => {
+                logger.error(`Error checking if user already exists: ${err.message}`);
+                res.status(500).send("Internal Server Error")
+            });
     }
 };
