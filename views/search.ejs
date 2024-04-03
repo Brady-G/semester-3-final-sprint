@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/search.css">
+    <script src="/scripts/search.js" defer></script>
+</head>
+<body>
+<h1>Search Interface</h1>
+<div class="search-container">
+    <input id="query" placeholder="Search...">
+    <select id="database">
+        <option value="pg" selected>PostgreSQL</option>
+        <option value="mongo">MongoDB</option>
+        <option value="both">MongoDB & PostgreSQL</option>
+    </select>
+    <button id="search">Search</button>
+</div>
+<% if (results.length > 0) {%>
+    <div class="search-results">
+        <% for(const item of results) { %>
+            <div class="search-result">
+                <img src="<%= item.image %>">
+                <div class="search-result-content">
+                    <h2><%= item.name %></h2>
+                    <p><%= item.description %></p>
+                </div>
+            </div>
+        <% } %>
+    </div>
+<% } else { %>
+    <div class="search-results-none">
+        <h2>No results found</h2>
+    </div>
+<% } %>
+</body>
+</html>
