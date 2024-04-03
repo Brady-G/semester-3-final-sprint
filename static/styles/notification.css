@@ -1,0 +1,41 @@
+.notification-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: end;
+    justify-content: end;
+
+    padding: 1rem;
+}
+
+.notification {
+    position: relative;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--accent-color);
+    color: var(--text-paragraph-color);
+    min-width: 10rem;
+
+    opacity: 1;
+    animation: fade 1s linear;
+    transition: opacity 0.5s;
+}
+
+.notification[data-type="error"] {
+    background-color: var(--highlight-color);
+    color: var(--text-title-color);
+}
+
+.notification[data-removing] {
+    opacity: 0;
+}
+
+@keyframes fade {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+}
+

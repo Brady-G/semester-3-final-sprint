@@ -1,0 +1,45 @@
+body, html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-container {
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 2rem;
+    border-radius: 1rem;
+
+    background-color: var(--container-color);
+}
+
+.login-container input {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+
+    background-color: var(--accent-color);
+    color: var(--text-title-color);
+    outline: none;
+}
+
+.login-container button {
+    width: calc(100% + 1rem); /* Add 1rem to the width of the button because of the padding */
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+
+    background-color: var(--highlight-color);
+    color: var(--text-title-color);
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
