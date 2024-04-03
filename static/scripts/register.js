@@ -15,7 +15,7 @@ document.getElementById("register").addEventListener("click", () => {
             });
             console.error(res);
         } else {
-            window.location.href = "/login";
+            window.location.href = "/";
         }
     })
 })
