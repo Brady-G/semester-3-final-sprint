@@ -37,7 +37,7 @@ module.exports = (req, res) => {
                         })
                         .catch((err) => {
                             console.log(err);
-                            res.sendStatus(500);
+                            res.sendStatus(500).send("Internal Server Error");
                         });
                 }
             })
