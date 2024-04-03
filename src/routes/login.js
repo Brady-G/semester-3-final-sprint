@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const {getUser} = require("../dal/users.dal");
+const {logger} = require("../logger");
 
 require('dotenv').config()
 
@@ -30,7 +31,6 @@ module.exports = (req, res) => {
                         // Create a JsonWebToken and return it
                         const token = jwt.sign({
                             id: user.id,
-                            name: user.name,
                             email: user.email
                         }, process.env.JWT_SECRET);
                         res.status(200).json({token})
@@ -44,6 +44,9 @@ module.exports = (req, res) => {
                     res.status(400).send("No user with that email");
                 }
             })
-            .catch(() => res.status(500).send("Internal Server Error"));
+            .catch((err) => {
+                logger.error(`Error logging in: ${err.message}`);
+                res.status(500).send("Internal Server Error")
+            });
     }
 };
