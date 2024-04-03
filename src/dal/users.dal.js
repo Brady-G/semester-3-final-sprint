@@ -33,7 +33,7 @@ const getUser = (email) => {
 // Add a new user
 const addUser = (email, password, salt) => {
     return new Promise((resolve, reject) => {
-        database.query("INSERT INTO public.users (password, salt, email) VALUES ($1, $2, $3, $4);", [password, salt, email], (err, result) => {
+        database.query("INSERT INTO public.users (password, salt, email) VALUES ($1, $2, $3);", [password, salt, email], (err, result) => {
             if (err) {
                 reject(err);
             } else if (!result) {
