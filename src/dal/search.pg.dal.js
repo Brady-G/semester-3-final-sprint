@@ -1,5 +1,10 @@
 const database = require("./pg");
 
+/**
+ * Search for a query in the postgres database
+ * @param query {string} - The search query
+ * @return {Promise<any[]>}
+ */
 const search = (query) => {
     return new Promise((resolve, reject) => {
         database.query(

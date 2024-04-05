@@ -3,6 +3,7 @@ const {combine, colorize, timestamp, printf} = winston.format;
 
 const colorizer = colorize();
 
+// Logs to the console with colored output but to file without colors
 const logger = winston.createLogger({
     level: 'info',
     transports: [
@@ -25,6 +26,7 @@ const logger = winston.createLogger({
     ],
 });
 
+// Logs queries to a separate file
 const queryLogger = winston.createLogger({
     level: 'info',
     transports: [

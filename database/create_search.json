@@ -1,0 +1,17 @@
+{
+    "mappings": {
+        "dynamic": false,
+        "fields": {
+            "description": [
+                {
+                    "type": "string"
+                }
+            ],
+            "name": [
+                {
+                    "type": "string"
+                }
+            ]
+        }
+    }
+}

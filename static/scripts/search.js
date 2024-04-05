@@ -14,3 +14,7 @@ queryBox.addEventListener("keyup", (event) => {
         search();
     }
 });
+
+const queries = new URLSearchParams(window.location.search);
+queryBox.value = queries.get("q") || "";
+dbBox.value = queries.get("db") || "pg";
